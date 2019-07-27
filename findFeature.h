@@ -11,6 +11,12 @@
 #include <iostream>
 #include <regex>
 #include <fstream>
+#include <stdio.h>
+#include <io.h>
+//PCL 
+#include <pcl/io/pcd_io.h>
+#include <pcl/point_types.h>
+#include <pcl/visualization/cloud_viewer.h>
 
 void findFeatureMatches(
 	cv::Mat& img1,
@@ -50,4 +56,11 @@ void trianglePoint(
 cv::Mat getCamera(std::string filePath);
 
 cv::Point2d camCoord(cv::Point3d&, cv::Mat&);
+
+void showCloud(std::vector<cv::Point3d>& points, pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
+
+void PicReader(std::string fileParentPath,std::vector<cv::Mat>&,std::vector<cv::Mat>&,cv::Mat&,std::vector<cv::Point3d>&);
+
+void usePNP(std::string fileParentPath, std::vector<cv::Mat>&, std::vector<cv::Mat>&, cv::Mat&,int,int,float);
+
 #endif // !FF_H
